@@ -4,18 +4,25 @@ import registerImage from '../../assets/svg/signup.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
-  const { createAccountWithEmailAndPassword } = useContext(AuthContext);
+  const { createAccountWithEmailAndPassword, updateCurrentUserProfile } = useContext(AuthContext);
 
   const handleRegistration = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const photoUrl = form.photoUrl.value;
     const email = form.email.value;
     const password = form.password.value;
 
     createAccountWithEmailAndPassword(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        updateCurrentUserProfile({
+          displayName: name,
+          photoURL: photoUrl,
+        })
+          .then(() => {})
+          .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
   };
@@ -36,6 +43,7 @@ const Register = () => {
                   className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
                   placeholder='Full Name'
                   name='name'
+                  required
                 />
               </div>
               <div className='relative'>
@@ -44,6 +52,7 @@ const Register = () => {
                   className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
                   placeholder='Photo URL'
                   name='photoUrl'
+                  required
                 />
               </div>
               <div className='relative'>
@@ -52,6 +61,7 @@ const Register = () => {
                   className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
                   placeholder='Enter email'
                   name='email'
+                  required
                 />
               </div>
               <div className='relative'>
@@ -60,6 +70,7 @@ const Register = () => {
                   className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm '
                   placeholder='Enter password'
                   name='password'
+                  required
                 />
               </div>
 
