@@ -4,6 +4,8 @@ import Main from './layouts/Main/Main';
 import Course from './pages/Course/Course';
 import Courses from './pages/Courses/Courses';
 import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,7 +16,11 @@ function App() {
         { path: '/', loader: async () => fetch(`http://localhost:5000/topic/all`), element: <Home /> },
         {
           path: '/login',
-          element: <h1 className='pt-20'>Login</h1>,
+          element: <Login />,
+        },
+        {
+          path: '/register',
+          element: <Register />,
         },
         {
           path: 'course/:id',

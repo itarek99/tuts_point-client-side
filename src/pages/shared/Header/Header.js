@@ -41,17 +41,16 @@ const Header = () => {
             <Link
               to='/login'
               className='block  bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 dark:hover:bg-indigo-800'
-              href='/'
             >
               Login
             </Link>
 
-            <a
+            <Link
+              to='/register'
               className='hidden  bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 transition hover:text-indigo-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 sm:block'
-              href='/'
             >
               Register
-            </a>
+            </Link>
           </div>
 
           <button className='block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 md:hidden'>
