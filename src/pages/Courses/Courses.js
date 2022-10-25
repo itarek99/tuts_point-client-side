@@ -6,7 +6,7 @@ const Courses = () => {
   return (
     <div>
       {courses.map((course) => (
-        <Link to={`/course/${course.id}`}>
+        <Link key={course.id} to={`/course/${course.id}`}>
           <article className='flex flex-col items-center sm:flex-row bg-white transition shadow-xl mb-6'>
             <div className='basis-1/3'>
               <img alt={course.title} src={course.thumb_url} className='w-full h-full object-cover' />

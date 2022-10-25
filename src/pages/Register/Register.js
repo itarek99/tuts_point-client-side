@@ -4,7 +4,21 @@ import registerImage from '../../assets/svg/signup.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
-  const five = useContext(AuthContext);
+  const { createAccountWithEmailAndPassword } = useContext(AuthContext);
+
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createAccountWithEmailAndPassword(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <section className='flex items-center min-h-screen'>
@@ -15,46 +29,50 @@ const Register = () => {
           </div>
 
           <div>
-            <form class='mb-0 space-y-4'>
-              <div class='relative'>
+            <form onSubmit={handleRegistration} className='mb-0 space-y-4'>
+              <div className='relative'>
                 <input
                   type='text'
-                  class='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
+                  className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
                   placeholder='Full Name'
+                  name='name'
                 />
               </div>
-              <div class='relative'>
+              <div className='relative'>
                 <input
                   type='text'
-                  class='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
+                  className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
                   placeholder='Photo URL'
+                  name='photoUrl'
                 />
               </div>
-              <div class='relative'>
+              <div className='relative'>
                 <input
                   type='email'
-                  class='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
+                  className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm'
                   placeholder='Enter email'
+                  name='email'
                 />
               </div>
-              <div class='relative'>
+              <div className='relative'>
                 <input
                   type='password'
-                  class='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm '
+                  className='w-full  border-gray-200 p-4 pr-12 text-sm shadow-sm '
                   placeholder='Enter password'
+                  name='password'
                 />
               </div>
 
-              <div class='flex flex-col sm:flex-row items-center justify-between gap-4'>
-                <p class=' text-gray-700'>
+              <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
+                <p className=' text-gray-700'>
                   already have an account? &nbsp;
-                  <Link to='/login' class='underline text-indigo-600'>
+                  <Link to='/login' className='underline text-indigo-600'>
                     login
                   </Link>
                 </p>
                 <button
                   type='submit'
-                  class='ml-3 inline-block  w-48 bg-indigo-600 px-5 py-3 text-sm font-medium text-white'
+                  className='ml-3 inline-block  w-48 bg-indigo-600 px-5 py-3 text-sm font-medium text-white'
                 >
                   Login
                 </button>

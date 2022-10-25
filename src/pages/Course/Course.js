@@ -2,7 +2,6 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Course = () => {
   const course = useLoaderData();
-  console.log(course);
 
   return (
     <section>
@@ -25,7 +24,9 @@ const Course = () => {
             <h2 className='text-3xl font-bold mb-3'>What you'll learn</h2>
             <ul className='grid grid-cols-2 mb-8 gap-y-4 gap-x-8 pl-5'>
               {course.topics.map((topic, i) => (
-                <li className='list-disc'>{topic}</li>
+                <li key={i} className='list-disc'>
+                  {topic}
+                </li>
               ))}
             </ul>
           </div>
