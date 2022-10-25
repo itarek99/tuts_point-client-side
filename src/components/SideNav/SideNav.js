@@ -13,7 +13,7 @@ const SideNav = () => {
   return (
     <div>
       {nav.map((item) => (
-        <Link to={`/topic/${item.tag}`} className='block'>
+        <Link key={item.id} to={`/topic/${item.tag}`} className='block border mb-3 px-3 py-2 text-sm w-full'>
           {item.title}
         </Link>
       ))}

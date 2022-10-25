@@ -8,7 +8,6 @@ const Home = () => {
   const courses = useLoaderData();
   const bestSelling = courses.filter((course) => course.best_selling);
   const recommended = courses.filter((course) => course.recommended);
-  console.log(bestSelling, recommended);
 
   return (
     <main>
@@ -74,12 +73,12 @@ const Home = () => {
           >
             {bestSelling.map((course) => (
               <SwiperSlide key={course.id}>
-                <img alt='Art' src={course.thumb_url} class='w-full object-cover' />
-                <h3 class='mt-2 font-bold text-gray-900'>
+                <img alt='Art' src={course.thumb_url} className='w-full object-cover' />
+                <h3 className='mt-2 font-bold text-gray-900'>
                   {course.title.length > 45 ? course.title.slice(0, 45) + '...' : course.title}
                 </h3>
-                <p class='mt-1 font-semibold text-gray-700 text-sm'>{course.author}</p>
-                <p class='mt-1 font-bold text-sm  text-gray-700'>
+                <p className='mt-1 font-semibold text-gray-700 text-sm'>{course.author}</p>
+                <p className='mt-1 font-bold text-sm  text-gray-700'>
                   <span className='text-amber-600'>{course.average_rating}</span> ({course.total_rating})
                 </p>
               </SwiperSlide>

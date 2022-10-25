@@ -7,9 +7,9 @@ const CoursesLayout = () => {
     <>
       <Header />
       <div className='mx-auto container px-4 py-16 sm:px-6 lg:px-8'>
-        <div class='grid pt-20 grid-cols-4 gap-4'>
+        <div className='grid pt-10 grid-cols-1 md:grid-cols-4 gap-0 md:gap-8'>
           <SideNav />
-          <div class='col-span-3'>
+          <div className='col-span-3'>
             <Outlet />
           </div>
         </div>

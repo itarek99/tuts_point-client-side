@@ -38,12 +38,13 @@ const Header = () => {
 
         <div className='flex items-center gap-4'>
           <div className='sm:flex sm:gap-4'>
-            <a
+            <Link
+              to='/login'
               className='block  bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 dark:hover:bg-indigo-800'
               href='/'
             >
               Login
-            </a>
+            </Link>
 
             <a
               className='hidden  bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 transition hover:text-indigo-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 sm:block'
