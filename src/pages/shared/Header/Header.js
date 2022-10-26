@@ -75,12 +75,12 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <a
+              <Link
+                to='/blog'
                 className='text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75'
-                href='/'
               >
                 Blogs
-              </a>
+              </Link>
             </li>
             <li>
               <a

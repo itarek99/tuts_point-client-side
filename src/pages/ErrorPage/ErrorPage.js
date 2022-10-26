@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Error = () => {
+const ErrorPage = () => {
   return (
     <div class='grid h-screen place-content-center bg-white'>
       <div class='text-center'>
@@ -20,4 +20,4 @@ const Error = () => {
     </div>
   );
 };
-export default Error;
+export default ErrorPage;
