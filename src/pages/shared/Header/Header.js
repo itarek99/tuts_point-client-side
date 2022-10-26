@@ -26,14 +26,14 @@ const Header = () => {
             <img className='h-10' src={logo} alt='logo' /> <span className='hidden sm:block'>tuts point</span>
           </Link>
 
-          <label for='AcceptConditions' class='relative h-8 w-14 cursor-pointer'>
+          <label htmlFor='AcceptConditions' className='relative h-8 w-14 cursor-pointer'>
             <input
               type='checkbox'
               id='AcceptConditions'
-              class='peer sr-only [&:checked_+_span_svg[data-unchecked-icon]]:hidden [&:checked_+_span_svg[data-checked-icon]]:block'
+              className='peer sr-only [&:checked_+_span_svg[data-unchecked-icon]]:hidden [&:checked_+_span_svg[data-checked-icon]]:block'
             />
 
-            <span class='absolute inset-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-gray-400 transition peer-checked:translate-x-6 peer-checked:text-indigo-600'>
+            <span className='absolute inset-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-gray-400 transition peer-checked:translate-x-6 peer-checked:text-indigo-600'>
               <svg
                 data-unchecked-icon
                 xmlns='http://www.w3.org/2000/svg'
@@ -48,7 +48,7 @@ const Header = () => {
               <svg
                 data-checked-icon
                 xmlns='http://www.w3.org/2000/svg'
-                class='hidden'
+                className='hidden'
                 width='16'
                 height='16'
                 viewBox='0 0 16 16'
@@ -59,7 +59,7 @@ const Header = () => {
               </svg>
             </span>
 
-            <span class='absolute inset-0 rounded-full bg-gray-400 transition peer-checked:bg-indigo-600'></span>
+            <span className='absolute inset-0 rounded-full bg-gray-400 transition peer-checked:bg-indigo-600'></span>
           </label>
         </div>
 

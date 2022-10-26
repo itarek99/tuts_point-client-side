@@ -1,10 +1,11 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import registerImage from '../../assets/svg/signup.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
-  const { createAccountWithEmailAndPassword, updateCurrentUserProfile } = useContext(AuthContext);
+  const { createAccountWithEmailAndPassword, updateCurrentUserProfile, providerLogin } = useContext(AuthContext);
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -24,6 +25,14 @@ const Register = () => {
           .then(() => {})
           .catch((err) => console.error(err));
       })
+      .catch((err) => console.error(err));
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const googleLoginHandler = () => {
+    providerLogin(googleProvider)
+      .then(() => {})
       .catch((err) => console.error(err));
   };
 
@@ -92,7 +101,9 @@ const Register = () => {
             <div>
               <p className='text-center my-8 font-bold text-gray-900'>OR</p>
               <div className='flex justify-center gap-4'>
-                <button className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>Login With Google</button>
+                <button onClick={googleLoginHandler} className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>
+                  Login With Google
+                </button>
                 <button className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>Login With GitHub</button>
               </div>
             </div>

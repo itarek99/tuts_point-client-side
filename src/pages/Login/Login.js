@@ -1,10 +1,11 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import loginImage from '../../assets/svg/login.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
-  const { logInWithEmailPassword } = useContext(AuthContext);
+  const { logInWithEmailPassword, providerLogin } = useContext(AuthContext);
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -14,6 +15,14 @@ const Login = () => {
 
     logInWithEmailPassword(email, password)
       .then((res) => {})
+      .catch((err) => console.error(err));
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const googleLoginHandler = () => {
+    providerLogin(googleProvider)
+      .then(() => {})
       .catch((err) => console.error(err));
   };
 
@@ -63,7 +72,9 @@ const Login = () => {
             <div>
               <p className='text-center my-8 font-bold text-gray-900'>OR</p>
               <div className='flex justify-center gap-4'>
-                <button className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>Login With Google</button>
+                <button onClick={googleLoginHandler} className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>
+                  Login With Google
+                </button>
                 <button className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>Login With GitHub</button>
               </div>
             </div>
