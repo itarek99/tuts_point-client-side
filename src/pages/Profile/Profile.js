@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Profile = () => {
@@ -30,13 +31,22 @@ const Profile = () => {
               <h3 className='font-bold uppercase text-gray-900'>{user?.displayName}</h3>
               <p className=' text-sm leading-relaxed text-gray-700 line-clamp-3'>{user?.email}</p>
             </div>
-
-            <button
-              onClick={handleLogOut}
-              className='block w-full bg-red-600 px-5 py-3 text-center text-sm font-bold uppercase text-white transition hover:bg-red-700'
-            >
-              LOG OUT
-            </button>
+            {user ? (
+              <button
+                onClick={handleLogOut}
+                className='block w-full bg-red-600 px-5 py-3 text-center text-sm font-bold uppercase text-white transition hover:bg-red-700'
+              >
+                LOG OUT
+              </button>
+            ) : (
+              <Link
+                to='/login'
+                onClick={handleLogOut}
+                className='block w-full bg-indigo-600 px-5 py-3 text-center text-sm font-bold uppercase text-white transition hover:bg-indigo-700'
+              >
+                LOG IN
+              </Link>
+            )}
           </div>
         </article>
       </div>

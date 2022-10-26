@@ -7,16 +7,16 @@ const Course = () => {
     <section>
       <div className='mx-auto container px-4 py-16 sm:px-6 lg:px-8'>
         <div className='pt-12 max-w-4xl mx-auto'>
-          <article className='flex flex-col sm:flex-row bg-white transition shadow-xl mb-6'>
-            <div className='flex flex-1 flex-col justify-between bg-indigo-50'>
+          <article className='flex flex-col md:flex-row bg-white transition shadow-xl mb-12'>
+            <div className='flex flex-1 flex-col justify-between order-2 md:order-1'>
               <div className='border-l border-gray-900/10 pt-4 px-6 sm:border-l-transparent'>
-                <h3 className='font-bold uppercase text-gray-900'>{course.title}</h3>
+                <h3 className='text-2xl font-bold uppercase text-gray-900'>{course.title}</h3>
                 <p className='mt-1 text-sm text-gray-700'>{course.summary}</p>
                 <p className='mt-1 text-sm text-gray-700'>{course.author}</p>
                 <p className='mt-1 text-sm text-gray-900 font-bold'>{course.duration} total hours</p>
               </div>
             </div>
-            <div className='basis-1/3'>
+            <div className='basis-1/3 order-1 md:order-2'>
               <img alt={course.title} src={course.thumb_url} className='w-full h-full object-cover' />
             </div>
           </article>
@@ -36,7 +36,7 @@ const Course = () => {
           </div>
           <div className='mt-12'>
             <Link
-              to={`/course/${course.id}`}
+              to={`/checkout/${course.id}`}
               className='block mx-auto w-56 bg-indigo-600 px-5 py-3 text-center text-xs font-bold uppercase text-white transition hover:bg-indigo-700'
             >
               Buy Now

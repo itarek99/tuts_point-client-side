@@ -1,11 +1,18 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/svg/login.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
+  const location = useLocation();
   const { logInWithEmailPassword, providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -14,15 +21,30 @@ const Login = () => {
     const password = form.password.value;
 
     logInWithEmailPassword(email, password)
-      .then((res) => {})
-      .catch((err) => console.error(err));
+      .then(() => {
+        navigate(from, { replace: true });
+        toast.success('successfully login', { style: { padding: '1rem' } });
+        form.reset();
+      })
+      .catch((err) => {
+        toast.error(err.message, { style: { padding: '1rem' } });
+      });
   };
-
-  const googleProvider = new GoogleAuthProvider();
 
   const googleLoginHandler = () => {
     providerLogin(googleProvider)
-      .then(() => {})
+      .then(() => {
+        navigate(from, { replace: true });
+        toast.success('successfully login', { style: { padding: '1rem' } });
+      })
+      .catch((err) => console.error(err));
+  };
+  const githubLoginHandler = () => {
+    providerLogin(githubProvider)
+      .then(() => {
+        navigate(from, { replace: true });
+        toast.success('successfully login', { style: { padding: '1rem' } });
+      })
       .catch((err) => console.error(err));
   };
 
@@ -75,7 +97,9 @@ const Login = () => {
                 <button onClick={googleLoginHandler} className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>
                   Login With Google
                 </button>
-                <button className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>Login With GitHub</button>
+                <button onClick={githubLoginHandler} className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>
+                  Login With GitHub
+                </button>
               </div>
             </div>
           </div>

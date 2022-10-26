@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/brands/logo.png';
 import { AuthContext } from '../../../context/AuthProvider';
@@ -102,13 +103,13 @@ const Header = () => {
                 {user.displayName}
               </p>
               <Link to='/profile'>
-                <img
-                  onMouseEnter={handleHover}
-                  onMouseLeave={handleHover}
-                  className='h-8 rounded-full'
-                  src={user.photoURL}
-                  alt={user.displayName}
-                />
+                <div onMouseEnter={handleHover} onMouseLeave={handleHover} className='h-8 rounded-full'>
+                  {user?.photoURL ? (
+                    <img className='h-full rounded-full' src={user.photoURL} alt={user.displayName} />
+                  ) : (
+                    <FaUserCircle className='h-8 text-3xl' />
+                  )}
+                </div>
               </Link>
             </div>
           ) : (

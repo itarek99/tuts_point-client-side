@@ -1,11 +1,12 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import registerImage from '../../assets/svg/signup.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
   const { createAccountWithEmailAndPassword, updateCurrentUserProfile, providerLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -16,23 +17,35 @@ const Register = () => {
     const password = form.password.value;
 
     createAccountWithEmailAndPassword(email, password)
-      .then((res) => {
-        const user = res.user;
+      .then(() => {
         updateCurrentUserProfile({
           displayName: name,
           photoURL: photoUrl,
         })
-          .then(() => {})
+          .then(() => {
+            navigate('/');
+          })
           .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
   };
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const googleLoginHandler = () => {
     providerLogin(googleProvider)
-      .then(() => {})
+      .then(() => {
+        navigate('/');
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const githubLoginHandler = () => {
+    providerLogin(githubProvider)
+      .then(() => {
+        navigate('/');
+      })
       .catch((err) => console.error(err));
   };
 
@@ -104,7 +117,9 @@ const Register = () => {
                 <button onClick={googleLoginHandler} className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>
                   Login With Google
                 </button>
-                <button className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>Login With GitHub</button>
+                <button onClick={githubLoginHandler} className='bg-indigo-600 px-5 py-3 text-sm font-medium text-white'>
+                  Login With GitHub
+                </button>
               </div>
             </div>
           </div>
