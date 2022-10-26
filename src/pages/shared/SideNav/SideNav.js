@@ -5,7 +5,7 @@ const SideNav = () => {
   const [nav, setNav] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/category')
+    fetch('https://tuts-point-api.vercel.app/category')
       .then((res) => res.json())
       .then((result) => setNav(result));
   }, []);

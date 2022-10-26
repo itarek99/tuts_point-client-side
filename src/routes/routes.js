@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <Main />,
     children: [
-      { path: '/', loader: async () => fetch(`http://localhost:5000/topic/all`), element: <Home /> },
+      { path: '/', loader: async () => fetch(`https://tuts-point-api.vercel.app/topic/all`), element: <Home /> },
       {
         path: '/login',
         element: <Login />,
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/checkout/:id',
-        loader: async ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+        loader: async ({ params }) => fetch(`https://tuts-point-api.vercel.app/course/${params.id}`),
         element: (
           <PrivateRoute>
             <Checkout />
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'course/:id',
-        loader: async ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+        loader: async ({ params }) => fetch(`https://tuts-point-api.vercel.app/course/${params.id}`),
         element: <Course />,
       },
     ],
@@ -57,12 +57,12 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/topic',
-        loader: async () => fetch(`http://localhost:5000/topic/all`),
+        loader: async () => fetch(`https://tuts-point-api.vercel.app/topic/all`),
         element: <Courses />,
       },
       {
         path: '/topic/:tag',
-        loader: async ({ params }) => fetch(`http://localhost:5000/topic/${params.tag}`),
+        loader: async ({ params }) => fetch(`https://tuts-point-api.vercel.app/topic/${params.tag}`),
         element: <Courses />,
       },
     ],

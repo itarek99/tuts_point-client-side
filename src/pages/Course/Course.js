@@ -1,4 +1,7 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import { FaFileDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdf from '../Others/Pdf';
 
 const Course = () => {
   const course = useLoaderData();
@@ -6,7 +9,31 @@ const Course = () => {
   return (
     <section>
       <div className='mx-auto container px-4 py-16 sm:px-6 lg:px-8'>
-        <div className='pt-12 max-w-4xl mx-auto'>
+        <div className='pt-8 max-w-4xl mx-auto'>
+          <div className='mb-6 text-end'>
+            <PDFDownloadLink
+              document={
+                <Pdf
+                  title={course.title}
+                  image={course.thumb_url}
+                  description={course.description}
+                  topics={course.topics}
+                />
+              }
+              fileName='outline'
+            >
+              {({ loading }) =>
+                loading ? (
+                  <button>Loading Document</button>
+                ) : (
+                  <button className='bg-indigo-600 text-white p-2'>
+                    <FaFileDownload className='text-xl' />
+                  </button>
+                )
+              }
+            </PDFDownloadLink>
+          </div>
+
           <article className='flex flex-col md:flex-row bg-white transition shadow-xl mb-12'>
             <div className='flex flex-1 flex-col justify-between order-2 md:order-1'>
               <div className='border-l border-gray-900/10 pt-4 px-6 sm:border-l-transparent'>
