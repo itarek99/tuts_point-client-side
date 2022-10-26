@@ -5,6 +5,7 @@ import Course from './pages/Course/Course';
 import Courses from './pages/Courses/Courses';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Profile from './pages/Profile/Profile';
 import Register from './pages/Register/Register';
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
         {
           path: '/register',
           element: <Register />,
+        },
+        {
+          path: '/profile',
+          element: <Profile />,
         },
         {
           path: 'course/:id',

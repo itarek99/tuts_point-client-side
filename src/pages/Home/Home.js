@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,11 +27,12 @@ const Home = () => {
                 We have 40k+ Online courses & 500K+ Online registered student. Find your desired Courses from them.
               </p>
 
-              <button
+              <Link
+                to='/topic'
                 href='#'
                 className='mt-8 inline-flex items-center  border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500'
               >
-                <span className='text-sm font-medium'> Get Started </span>
+                <span className='text-sm font-medium'> Browse All Courses </span>
 
                 <svg
                   className='ml-3 h-5 w-5'
@@ -42,7 +43,7 @@ const Home = () => {
                 >
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M17 8l4 4m0 0l-4 4m4-4H3' />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
