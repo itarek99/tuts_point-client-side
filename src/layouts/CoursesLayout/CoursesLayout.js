@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import Footer from '../../pages/shared/Footer/Footer';
 import Header from '../../pages/shared/Header/Header';
 import SideNav from '../../pages/shared/SideNav/SideNav';
 
@@ -14,6 +15,7 @@ const CoursesLayout = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

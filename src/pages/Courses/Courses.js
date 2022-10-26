@@ -8,11 +8,11 @@ const Courses = () => {
       {courses.map((course) => (
         <Link key={course.id} to={`/course/${course.id}`}>
           <article className='flex flex-col items-center sm:flex-row bg-white transition shadow-xl mb-6'>
-            <div className='basis-1/3'>
+            <div className='basis-1/3 h-full'>
               <img alt={course.title} src={course.thumb_url} className='w-full h-full object-cover' />
             </div>
             <div className='flex flex-1 flex-col justify-between'>
-              <div className='border-l border-gray-900/10 px-6 sm:border-l-transparent'>
+              <div className='border-l border-gray-900/10 p-6 sm:border-l-transparent'>
                 <h3 className='font-bold uppercase text-gray-900'>{course.title}</h3>
                 <p className='mt-1 text-sm text-gray-700'>{course.summary}</p>
                 <p className='mt-1 text-sm text-gray-700'>{course.author}</p>

@@ -41,8 +41,10 @@ const Pdf = ({ title, image, description, topics }) => {
           <Image src={image}></Image>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.heading}>What you'll learn</Text>
-          {topics.map((topic) => (
-            <Text style={styles.topic}>&#x2022; {topic}</Text>
+          {topics.map((topic, i) => (
+            <Text key={i} style={styles.topic}>
+              &#x2022; {topic}
+            </Text>
           ))}
           <Text style={styles.heading}>Description</Text>
           <Text style={styles.description}>{description}</Text>

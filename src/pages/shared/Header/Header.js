@@ -9,8 +9,6 @@ const Header = () => {
   const [toggle, setToggle] = useState(true);
   const [showName, setShowName] = useState(false);
 
-  console.log(user);
-
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -153,9 +151,15 @@ const Header = () => {
           <li className='text-center'>
             <Link
               to='/topic'
-              className='text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75'
+              className='text-gray-500 block mb-2 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75'
             >
               Courses
+            </Link>
+            <Link
+              to='/blog'
+              className='text-gray-500 block transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75'
+            >
+              Blog
             </Link>
           </li>
         </ul>

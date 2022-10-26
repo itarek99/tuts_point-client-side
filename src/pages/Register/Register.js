@@ -1,5 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import registerImage from '../../assets/svg/signup.svg';
 import { AuthContext } from '../../context/AuthProvider';
@@ -16,6 +17,11 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if (password.length < 6) {
+      toast.error('password length minimum 6 alphanumeric characters');
+      return;
+    }
+
     createAccountWithEmailAndPassword(email, password)
       .then(() => {
         updateCurrentUserProfile({
@@ -23,11 +29,15 @@ const Register = () => {
           photoURL: photoUrl,
         })
           .then(() => {
+            toast.success('registration complete');
+            form.reset();
             navigate('/');
           })
-          .catch((err) => console.error(err));
+          .catch((err) => toast.error(err.message));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
 
   const googleProvider = new GoogleAuthProvider();

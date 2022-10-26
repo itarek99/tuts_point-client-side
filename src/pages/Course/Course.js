@@ -36,8 +36,8 @@ const Course = () => {
 
           <article className='flex flex-col md:flex-row bg-white transition shadow-xl mb-12'>
             <div className='flex flex-1 flex-col justify-between order-2 md:order-1'>
-              <div className='border-l border-gray-900/10 pt-4 px-6 sm:border-l-transparent'>
-                <h3 className='text-2xl font-bold uppercase text-gray-900'>{course.title}</h3>
+              <div className='border-l border-gray-900/10 pt-4 p-6 sm:border-l-transparent'>
+                <h3 className='font-xl md:text-2xl font-bold uppercase text-gray-900'>{course.title}</h3>
                 <p className='mt-1 text-sm text-gray-700'>{course.summary}</p>
                 <p className='mt-1 text-sm text-gray-700'>{course.author}</p>
                 <p className='mt-1 text-sm text-gray-900 font-bold'>{course.duration} total hours</p>
@@ -49,7 +49,7 @@ const Course = () => {
           </article>
           <div>
             <h2 className='text-3xl font-bold mb-3'>What you'll learn</h2>
-            <ul className='grid grid-cols-2 mb-8 gap-y-4 gap-x-8 pl-5'>
+            <ul className='grid grid-cols-1 md:grid-cols-2 mb-8 gap-y-4 gap-x-8 pl-5'>
               {course.topics.map((topic, i) => (
                 <li key={i} className='list-disc'>
                   {topic}
