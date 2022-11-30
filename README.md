@@ -1,6 +1,7 @@
 # tuts point - online learning
 
-[https://tuts-point-240ea.web.app/](https://tuts-point-240ea.web.app/)
+[Live Link](https://tuts-point-240ea.web.app/)
+[Server Side Repo](https://github.com/itarek99/tuts_point-server-code)
 
 ## Features
 
